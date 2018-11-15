@@ -4,9 +4,6 @@
 
 #include "Inforamtion.h"
 #include <fstream>
-#include <sstream>
-#include <iostream>
-#include "Inforamtion.h"
 
 using namespace std;
 
@@ -30,26 +27,23 @@ const int *Inforamtion::get_binary_tab() const { return binary_tab; }
 
 
 string Inforamtion::OpenAndReturnText(const char * name, int & length_tab ) {
-    stringstream mychar;
     fstream file;
-    char temp=0;
+    string xx;
     file.open(name);
-
     if(!file.is_open()) {
 
         exit(EXIT_FAILURE);
     }
     else {
-        while (file.get(temp) )
+        while (!file.eof())
         {
-            mychar << temp;
-            ++length_tab;
-
+            xx.push_back(file.get());
         }
-
+        xx.pop_back();
+        length_tab=xx.size();
         file.clear();
         file.close();
-        return mychar.str();
+        return xx;
     }
 }
 
