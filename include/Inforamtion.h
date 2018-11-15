@@ -19,7 +19,7 @@ public:
     explicit Inforamtion(const char * file_name);
     int get_lenght_plain_text() const ;
     string get_plain_text() const ;
-    inline const int *get_binary_tab() const;
+    const int *get_binary_tab() const;
     ~Inforamtion();
 
 private:
