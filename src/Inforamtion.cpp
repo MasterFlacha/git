@@ -4,8 +4,8 @@
 
 #include "Inforamtion.h"
 #include <fstream>
+#include <Inforamtion.h>
 
-using namespace std;
 
 using std::fstream;
 using std::stringstream;
@@ -13,12 +13,15 @@ using std::stringstream;
 Inforamtion::Inforamtion(const char *file_name) {
     lenght_plain_text=0;
     plain_text=OpenAndReturnText(file_name,lenght_plain_text);
-    binary_tab = new int[lenght_plain_text*8];
-    for (int i = 0; i < lenght_plain_text ; ++i)
+    lenght_binary_tab=lenght_plain_text*8;
+    binary_tab = new int[lenght_binary_tab]{};
+    for (int i = 0; i < lenght_plain_text ; ++i){
         SignToBinary(plain_text[i],&binary_tab[i*8 == 0 ? 0 :i*8]);
-
+    }
 }
 int Inforamtion::get_lenght_plain_text() const { return lenght_plain_text; }
+
+int Inforamtion::get_lenght_binary_tab() const { return lenght_binary_tab; }
 
 string Inforamtion::get_plain_text() const { return plain_text; }
 
@@ -65,6 +68,8 @@ void Inforamtion::XOR(int *first_b, int *second_b) {
 Inforamtion::~Inforamtion() {
     delete [] binary_tab;
 }
+
+
 
 
 

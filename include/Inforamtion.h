@@ -14,10 +14,13 @@ private:
     int lenght_plain_text;
     string plain_text;
     int *binary_tab;
+    int lenght_binary_tab;
+
 
 public:
     explicit Inforamtion(const char * file_name);
     int get_lenght_plain_text() const ;
+    int get_lenght_binary_tab() const ;
     string get_plain_text() const ;
     const int *get_binary_tab() const;
     ~Inforamtion();
